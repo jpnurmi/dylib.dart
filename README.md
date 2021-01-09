@@ -1,7 +1,9 @@
-A library for Dart developers.
+# dylib
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+[![pub](https://img.shields.io/pub/v/dylib.svg)](https://pub.dev/packages/dylib)
+[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A set of helpers that help resolving names and paths of dynamic libraries.
 
 ## Usage
 
@@ -10,13 +12,11 @@ A simple usage example:
 ```dart
 import 'package:dylib/dylib.dart';
 
-main() {
-  var awesome = new Awesome();
-}
+print(resolveDylibPath('foo'));
+
+// android: libfoo.so
+// ios: libfoo.dylib
+// linux: libfoo.so
+// macos: libfoo.dylib
+// windows: foo.dll
 ```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
