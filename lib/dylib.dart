@@ -9,17 +9,23 @@ import 'package:path/path.dart' as p;
 /// Resolves the path to a dynamic library. The library name can be specified
 /// in a cross-platform manner as a base name.
 ///
-/// Furthermore, the name of a Dart define or an environment variable can be
-/// optionally specified to override the lookup location.
-String resolveDylibPath(String baseName, [String variable = '']) {
+/// Furthermore, the lookup path and/or the name of a Dart define or an
+/// environment variable can be optionally passed to specify the lookup
+/// location.
+String resolveDylibPath(
+  String baseName, {
+  String? path,
+  String? dartDefine,
+  String? environmentVariable,
+}) {
   // Dart define or environment variable
-  final path = _resolveVariable(variable);
+  final variable = _resolveVariable(dartDefine, environmentVariable);
 
   // LIBFOO_PATH=/path/to/libfoo.so (full file path) specified
-  if (_isFile(path)) return path;
+  if (_isFile(variable)) return variable;
 
   // none or LIBFOO_PATH=/path (just the path) specified
-  return p.join(path, resolveDylibName(baseName));
+  return p.join(path ?? '', resolveDylibName(baseName));
 }
 
 /// Resolves the appropriate dynamic library file name on this platform based
@@ -56,11 +62,10 @@ String get dylibSuffix {
           : '.so';
 }
 
-String _resolveVariable(String variable) {
-  if (variable.isEmpty) return '';
+String _resolveVariable(String? dartDefine, String? environmentVariable) {
   return String.fromEnvironment(
-    variable,
-    defaultValue: Platform.environment[variable] ?? '',
+    dartDefine ?? '',
+    defaultValue: Platform.environment[environmentVariable ?? ''] ?? '',
   );
 }
 
