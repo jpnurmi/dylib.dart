@@ -43,17 +43,17 @@ String get dylibPrefix => Platform.isWindows ? '' : 'lib';
 
 /// The appropriate dynamic library suffix on this platform.
 ///
-/// - Android: `so`
-/// - iOS: `dylib`
-/// - Linux: `so`
-/// - MacOS: `dylib`
-/// - Windows: `dll`
+/// - Android: `.so`
+/// - iOS: `.dylib`
+/// - Linux: `.so`
+/// - MacOS: `.dylib`
+/// - Windows: `.dll`
 String get dylibSuffix {
   return Platform.isWindows
-      ? 'dll'
+      ? '.dll'
       : Platform.isMacOS || Platform.isIOS
-          ? 'dylib'
-          : 'so';
+          ? '.dylib'
+          : '.so';
 }
 
 String _resolveVariable(String variable) {
