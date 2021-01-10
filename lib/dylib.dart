@@ -38,7 +38,7 @@ String resolveDylibPath(
 /// - MacOS: `libfoo.dylib`
 /// - Windows: `foo.dll`
 String resolveDylibName(String baseName) {
-  return p.setExtension(baseName, dylibSuffix);
+  return dylibPrefix + p.setExtension(baseName, dylibSuffix);
 }
 
 /// The appropriate dynamic library prefix on this platform.
