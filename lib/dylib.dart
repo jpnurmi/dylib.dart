@@ -25,7 +25,7 @@ String resolveDylibPath(
   if (_isFile(variable)) return variable;
 
   // none or LIBFOO_PATH=/path (just the path) specified
-  return p.join(path ?? '', resolveDylibName(baseName));
+  return p.join(path ?? variable, resolveDylibName(baseName));
 }
 
 /// Resolves the appropriate dynamic library file name on this platform based

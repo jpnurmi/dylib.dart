@@ -1,3 +1,7 @@
+## [0.2.1-nullsafety.0] - 2021-01-11
+
+* Use environment variable as a fallback path.
+
 ## [0.2.0-nullsafety.0] - 2021-01-10
 
 * Allow specifying path, dart define & environment variables separately.
