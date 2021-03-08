@@ -1,3 +1,8 @@
+## [0.3.0] - 2021-03-08
+
+* Upgrade to Dart SDK stable.
+* Upgrade dependencies.
+
 ## [0.2.1-nullsafety.0] - 2021-01-11
 
 * Use environment variable as a fallback path.
