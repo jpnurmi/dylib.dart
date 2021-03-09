@@ -83,7 +83,7 @@ String get dylibSuffix {
 String _resolveVariable(String? dartDefine, String? environmentVariable) {
   return String.fromEnvironment(
     dartDefine ?? '',
-    defaultValue: Platform.environment[environmentVariable ?? ''] ?? '',
+    defaultValue: _platform.environment[environmentVariable ?? ''] ?? '',
   );
 }
 

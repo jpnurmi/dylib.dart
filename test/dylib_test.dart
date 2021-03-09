@@ -1,3 +1,5 @@
+import 'dart:io' as io;
+
 import 'package:dylib/dylib.dart';
 import 'package:platform/platform.dart';
 import 'package:test/test.dart';
@@ -52,5 +54,29 @@ void main() {
     expect(resolveDylibName('base.dll'), 'base.dll');
     expect(resolveDylibName('libbase'), 'libbase.dll');
     expect(resolveDylibName('libbase.dll'), 'libbase.dll');
+  });
+
+  test('path', () {
+    setDylibPlatform(FakePlatform(operatingSystem: 'linux', environment: {
+      'LIBBASE_DIR': io.Directory.current.path,
+      'LIBBASE_FILE': io.Platform.resolvedExecutable,
+    }));
+    expect(resolveDylibPath('base', path: '/foo/bar'), '/foo/bar/libbase.so');
+    expect(
+      resolveDylibPath(
+        'base',
+        path: '/foo/bar',
+        environmentVariable: 'LIBBASE_DIR',
+      ),
+      '${io.Directory.current.path}/libbase.so',
+    );
+    expect(
+      resolveDylibPath(
+        'base',
+        path: '/foo/bar',
+        environmentVariable: 'LIBBASE_FILE',
+      ),
+      io.Platform.resolvedExecutable,
+    );
   });
 }
