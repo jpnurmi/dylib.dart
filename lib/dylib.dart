@@ -4,7 +4,15 @@
 library dylib;
 
 import 'dart:io';
+import 'package:meta/meta.dart';
 import 'package:path/path.dart' as p;
+import 'package:platform/platform.dart' as p;
+
+/// Used for testing platforms.
+@visibleForTesting
+void setDylibPlatform(p.Platform platform) => _platform = platform;
+
+p.Platform _platform = p.LocalPlatform();
 
 /// Resolves the path to a dynamic library. The library name can be specified
 /// in a cross-platform manner as a base name.
@@ -55,7 +63,7 @@ String resolveDylibName(String baseName) {
 ///
 /// - Windows: `` (empty)
 /// - Others: `lib`
-String get dylibPrefix => Platform.isWindows ? '' : 'lib';
+String get dylibPrefix => _platform.isWindows ? '' : 'lib';
 
 /// The appropriate dynamic library suffix on this platform.
 ///
@@ -65,9 +73,9 @@ String get dylibPrefix => Platform.isWindows ? '' : 'lib';
 /// - MacOS: `.dylib`
 /// - Windows: `.dll`
 String get dylibSuffix {
-  return Platform.isWindows
+  return _platform.isWindows
       ? '.dll'
-      : Platform.isMacOS || Platform.isIOS
+      : _platform.isMacOS || _platform.isIOS
           ? '.dylib'
           : '.so';
 }
