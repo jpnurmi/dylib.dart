@@ -103,10 +103,3 @@ extension _PrefixedString on String {
     return prefix + this;
   }
 }
-
-extension _SuffixedString on String {
-  String withSuffix(String suffix) {
-    if (isEmpty || endsWith(suffix)) return this;
-    return this + suffix;
-  }
-}
