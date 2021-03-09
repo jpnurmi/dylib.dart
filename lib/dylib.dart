@@ -24,8 +24,14 @@ String resolveDylibPath(
   // LIBFOO_PATH=/path/to/libfoo.so (full file path) specified
   if (_isFile(variable)) return variable;
 
-  // none or LIBFOO_PATH=/path (just the path) specified
-  return p.join(path ?? variable, resolveDylibName(baseName));
+  // Resolve potential library names
+  final baseDylib = resolveDylibName(baseName);
+  final variableDylib = resolveDylibName(variable);
+
+  // LIBFOO_PATH=/path/to/ (only path) specified
+  if (_isDirectory(variable)) return p.join(variable, baseDylib);
+
+  return p.join(path ?? '', variableDylib.isEmpty ? baseDylib : variableDylib);
 }
 
 /// Resolves the appropriate dynamic library file name on this platform based
@@ -38,7 +44,11 @@ String resolveDylibPath(
 /// - MacOS: `libfoo.dylib`
 /// - Windows: `foo.dll`
 String resolveDylibName(String baseName) {
-  return dylibPrefix + p.setExtension(baseName, dylibSuffix);
+  if (baseName.isEmpty) return '';
+  if (p.extension(baseName).isEmpty) {
+    baseName = p.setExtension(baseName, dylibSuffix);
+  }
+  return baseName.withPrefix(dylibPrefix);
 }
 
 /// The appropriate dynamic library prefix on this platform.
@@ -72,6 +82,11 @@ String _resolveVariable(String? dartDefine, String? environmentVariable) {
 bool _isFile(String path) {
   if (path.isEmpty) return false;
   return Directory(path).statSync().type == FileSystemEntityType.file;
+}
+
+bool _isDirectory(String path) {
+  if (path.isEmpty) return false;
+  return Directory(path).statSync().type == FileSystemEntityType.directory;
 }
 
 extension _PrefixedString on String {

@@ -1,3 +1,7 @@
+## [0.3.1] - 2021-03-09
+
+* Allow specifying plain file name via environment.
+
 ## [0.3.0] - 2021-03-08
 
 * Upgrade to Dart SDK stable.
