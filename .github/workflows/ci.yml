@@ -18,3 +18,9 @@ jobs:
       run: dart pub get
     - name: Run Tests
       run: dart run test
+    - name: Measure Coverage
+      run: pub run test_coverage
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        file: coverage/lcov.info
