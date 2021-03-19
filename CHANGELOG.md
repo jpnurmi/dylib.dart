@@ -1,3 +1,8 @@
+## [0.3.2] - 2021-03-19
+
+* Add tests, CI, coverage, and example.
+* Remove unused code to address pub.dev score.
+
 ## [0.3.1] - 2021-03-09
 
 * Allow specifying plain file name via environment.
