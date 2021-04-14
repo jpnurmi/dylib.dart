@@ -1,6 +1,6 @@
 name: dylib
-description: A set of helpers that help resolving names and paths of dynamic libraries.
-version: 0.3.2
+description: A set of helpers for resolving names and paths of dynamic libraries.
+version: 0.3.2+1
 homepage: https://github.com/jpnurmi/dart_dylib
 repository: https://github.com/jpnurmi/dart_dylib
 issue_tracker: https://github.com/jpnurmi/dart_dylib/issues

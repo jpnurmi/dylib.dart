@@ -1,4 +1,4 @@
-/// A set of helpers that help resolving names and paths of dynamic libraries.
+/// A set of helpers for resolving names and paths of dynamic libraries.
 /// The helpers are meant to be used in conjuction with `DynamicLibrary` from
 /// `dart:ffi`.
 library dylib;

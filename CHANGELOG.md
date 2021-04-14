@@ -1,3 +1,7 @@
+## [0.3.2+1] - 2021-04-14
+
+* A cosmetic description update.
+
 ## [0.3.2] - 2021-03-19
 
 * Add tests, CI, coverage, and example.
