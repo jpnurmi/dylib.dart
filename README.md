@@ -5,7 +5,7 @@
 ![build](https://github.com/jpnurmi/dylib.dart/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/jpnurmi/dylib.dart/branch/master/graph/badge.svg)](https://codecov.io/gh/jpnurmi/dylib.dart)
 
-A set of helpers that help resolving names and paths of dynamic libraries.
+A set of helpers for resolving names and paths of dynamic libraries.
 
 | Platform | Name |
 |---|---|
