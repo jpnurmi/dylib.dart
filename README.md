@@ -3,7 +3,7 @@
 [![pub](https://img.shields.io/pub/v/dylib.svg)](https://pub.dev/packages/dylib)
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![build](https://github.com/jpnurmi/dylib.dart/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/jpnurmi/dylib.dart/branch/master/graph/badge.svg)](https://codecov.io/gh/jpnurmi/dylib.dart)
+[![codecov](https://codecov.io/gh/jpnurmi/dylib.dart/branch/main/graph/badge.svg)](https://codecov.io/gh/jpnurmi/dylib.dart)
 
 A set of helpers for resolving names and paths of dynamic libraries.
 
