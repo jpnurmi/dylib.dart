@@ -23,12 +23,12 @@ class LibFoo {
   LibFoo(this._dylib);
 
   int bar() {
-    return (_foo_bar ??=
-        _dylib.lookupFunction<_c_foo_bar, _dart_foo_bar>('foo_bar'))();
+    return (_fooBar ??=
+        _dylib.lookupFunction<_CFooBar, _DartFooBar>('foo_bar'))();
   }
 
-  _dart_foo_bar? _foo_bar;
+  _DartFooBar? _fooBar;
 }
 
-typedef _c_foo_bar = ffi.Int32 Function();
-typedef _dart_foo_bar = int Function();
+typedef _CFooBar = ffi.Int32 Function();
+typedef _DartFooBar = int Function();
