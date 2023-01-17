@@ -1,3 +1,8 @@
+## [0.3.3]
+
+* Transferred to ubuntu-flutter-community.
+* Updated example.
+
 ## [0.3.2+1] - 2021-04-14
 
 * A cosmetic description update.
