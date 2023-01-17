@@ -2,9 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -13,13 +14,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install Dart
-      uses: dart-lang/setup-dart@v1
+      uses: subosito/flutter-action@v2
     - name: Get Dependencies
       run: dart pub get
     - name: Run Tests
-      run: dart run test
+      run: dart test
     - name: Measure Coverage
-      run: pub run test_coverage
+      run: flutter test --coverage
     - name: Upload Coverage
       uses: codecov/codecov-action@v1
       with:
