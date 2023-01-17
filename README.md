@@ -3,7 +3,7 @@
 [![pub](https://img.shields.io/pub/v/dylib.svg)](https://pub.dev/packages/dylib)
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![build](https://github.com/ubuntu-flutter-community/dylib.dart/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/ubuntu-flutter-community/dylib.dart/branch/main/graph/badge.svg)](https://codecov.io/gh/jpnurmi/dylib.dart)
+[![codecov](https://codecov.io/gh/ubuntu-flutter-community/dylib.dart/branch/main/graph/badge.svg?token=G13GH0QUE8)](https://codecov.io/gh/ubuntu-flutter-community/dylib.dart)
 
 A set of helpers for resolving file names and paths of dynamic libraries.
 
