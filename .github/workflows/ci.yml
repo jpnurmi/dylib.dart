@@ -2,26 +2,63 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  analyze:
+    runs-on: ubuntu-22.04
+    container:
+      image: dart:stable
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install Dart
-      uses: subosito/flutter-action@v2
-    - name: Get Dependencies
-      run: dart pub get
-    - name: Run Tests
-      run: dart test
-    - name: Measure Coverage
-      run: flutter test --coverage
-    - name: Upload Coverage
-      uses: codecov/codecov-action@v1
+    - uses: actions/checkout@v3
+    - run: dart pub get
+    - run: dart analyze --fatal-infos .
+
+  compile:
+    runs-on: ubuntu-22.04
+    container:
+      image: dart:stable
+    steps:
+    - uses: actions/checkout@v3
+    - run: dart pub get
+    - run: dart compile exe example/example.dart
+
+  coverage:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+    - run: flutter test --coverage
+    - uses: codecov/codecov-action@v3
       with:
-        file: coverage/lcov.info
+        token: ${{secrets.CODECOV_TOKEN}}
+
+  format:
+    runs-on: ubuntu-22.04
+    container:
+      image: dart:stable
+    steps:
+      - uses: actions/checkout@v3
+      - run: dart pub get
+      - run: dart format --set-exit-if-changed .
+
+  pub:
+    runs-on: ubuntu-22.04
+    container:
+      image: dart:stable
+    steps:
+      - uses: actions/checkout@v3
+      - run: dart pub get
+      - run: dart pub publish --dry-run
+
+  test:
+    runs-on: ubuntu-22.04
+    container:
+      image: dart:stable
+    steps:
+    - uses: actions/checkout@v3
+    - run: dart pub get
+    - run: dart test
